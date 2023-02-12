@@ -13,7 +13,9 @@ public class HrWorkerApplication {
   public static void main(String[] args) {
 
     LOGGER.info("Iniciando aplicação HrWorker");
+
     SpringApplication.run(HrWorkerApplication.class, args);
+
     LOGGER.info("Aplicação HrWorker iniciada com sucesso!");
 
   }
