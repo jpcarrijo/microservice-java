@@ -1,0 +1,16 @@
+	Microservices
+
+RestTemplate : criar um @Bean para monitorar o método restTemplate() que permite requisições REST de um outro projeto. Colocado no service da aplicação que envia a requisição. Existe uma forma melhor....
+
+-- OpenFeign: 
+    instalar a dependencia. 
+    na classe que roda o projeto inserir a anotação @EnableFeignClients. 
+    criar uma interface com @Component e @FeignClient com os parametros: name="projeto", url="localhost:8001", path="/projeto". 
+    na classe de serviço injetar a interface que foi criada. essa interface terá os métodos do jpa.
+
+-- Balanceamento de carga manual
+    instalar a dependencia do pacote Ribbon que será usado.
+    na classe que roda a aplicação inserir a anotação @RibbonClient, mais o parametro name="projeto".
+    no applicationproperties do projeto que irá enviar a requição inserir: 
+	hr-worker.ribbon.listOfServers="portas-que-serão-usadas", "portas-que-serão-usadas"
+    para ver que a aplicação está usando balanceamento de carga, duplicar a classe que implementa os métodos REST. na configuração uma classe terá uma porta e a outra uma outra porta. com isso terá que ser realizado o balanço decarga.. uma requisição será processada por uma classe depois outra..  
