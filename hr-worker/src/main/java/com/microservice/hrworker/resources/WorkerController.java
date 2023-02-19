@@ -5,8 +5,11 @@ import com.microservice.hrworker.entities.Worker;
 import com.microservice.hrworker.exception.NotFoundException;
 import com.microservice.hrworker.repositories.WorkerRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +22,11 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class WorkerController {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(WorkerController.class);
+
   // REPOSITORY
   final WorkerRepository workerRepository;
+  final Environment env;
 
   // INJECTION
   final WorkerDTO workerDTO;
@@ -35,6 +41,8 @@ public class WorkerController {
 
   @GetMapping("/{id}")
   public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id) {
+
+    LOGGER.info("PORT = " + env.getProperty("local.server.port"));
 
     try {
 
