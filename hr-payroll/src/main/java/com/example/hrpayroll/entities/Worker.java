@@ -75,7 +75,7 @@ public class Worker implements Serializable {
     private WorkerBuilder() {
     }
 
-    public static WorkerBuilder aWorker() {
+    public static WorkerBuilder builder() {
       return new WorkerBuilder();
     }
 
@@ -98,4 +98,5 @@ public class Worker implements Serializable {
       return new Worker(id, name, dailyIncome);
     }
   }
+
 }

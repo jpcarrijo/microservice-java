@@ -2,41 +2,25 @@ package com.example.hrpayroll.services;
 
 import com.example.hrpayroll.entities.Payment;
 import com.example.hrpayroll.entities.Worker;
-import com.example.hrpayroll.exception.NotFoundException;
+import com.example.hrpayroll.feignclients.WorkerFeignClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class PaymentService {
 
-  @Value("${hr-worker.host}")
-  private String host;
+  final WorkerFeignClient workerFeignClient;
 
-  final RestTemplate restTemplate;
+  @GetMapping(value = "{id}")
+  public Payment getPayment(@PathVariable(value = "id") Long workerId, Integer days) {
 
-  public Payment getPayment(Long workerId, Integer days) throws HttpClientErrorException {
+    Worker worker = workerFeignClient.findById(workerId);
 
-    Map<String, String> uriVariables = new HashMap<>();
-    uriVariables.put("id", "" + workerId);
+    return new Payment(worker.getName(), worker.getDailyIncome(), days);
 
-    Worker worker = restTemplate.getForObject(host + "/worker/{id}", Worker.class, uriVariables);
-
-    try {
-
-      assert worker != null;
-
-      return new Payment(worker.getName(), worker.getDailyIncome(), days);
-
-    } catch (HttpClientErrorException ex) {
-      throw new NotFoundException(ex.getMessage());
-    }
   }
 }

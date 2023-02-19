@@ -1,34 +1,29 @@
-package com.microservice.hrworker.entities;
+package com.microservice.hrworker.data;
 
-import javax.persistence.*;
+import com.microservice.hrworker.entities.Worker;
+
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@Entity
-@Table(name = "tb_worker")
-public class Worker implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+public class WorkerDTO implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "name")
   private String name;
 
-  @Column(name = "daily_income")
   private Double dailyIncome;
 
 
-  public Worker(Long id, String name, Double dailyIncome) {
+  public WorkerDTO(Long id, String name, Double dailyIncome) {
     this.id = id;
     this.name = name;
     this.dailyIncome = dailyIncome;
   }
 
 
-  public Worker() {
+  public WorkerDTO() {
   }
 
   public Long getId() { return id; }
@@ -60,21 +55,6 @@ public class Worker implements Serializable {
   }
 
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Worker)) return false;
-    Worker worker = (Worker) o;
-    return id.equals(worker.id);
-  }
-
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
-
-
   public static final class WorkerBuilder {
     private Long id;
     private String name;
@@ -102,9 +82,29 @@ public class Worker implements Serializable {
       return this;
     }
 
-    public Worker build() {
-      return new Worker(id, name, dailyIncome);
+    public WorkerDTO build() {
+      return new WorkerDTO(id, name, dailyIncome);
     }
   }
 
+
+  public WorkerDTO convertForDTO(Worker worker) {
+    return WorkerDTO.WorkerBuilder.builder()
+        .id(worker.getId())
+        .name(worker.getName())
+        .dailyIncome(worker.getDailyIncome())
+        .build();
+  }
+
+  public List<WorkerDTO> convertForDTO(List<Worker> workerList) {
+    return workerList.stream().map(e -> {
+
+      return WorkerBuilder.builder()
+          .id(e.getId())
+          .name(e.getName())
+          .dailyIncome(e.getDailyIncome())
+          .build();
+
+    }).collect(Collectors.toList());
+  }
 }
