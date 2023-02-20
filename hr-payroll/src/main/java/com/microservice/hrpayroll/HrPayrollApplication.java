@@ -1,15 +1,16 @@
-package com.example.hrpayroll;
+package com.microservice.hrpayroll;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
+@EnableEurekaClient
 @SpringBootApplication
-@RibbonClient(name = "hr-worker")   // identificar quem será o client, no caso: hr-worker
+// @RibbonClient(name = "hr-worker")   // identificar quem será o client, no caso: hr-worker      ( BALANCEAMENTO DE CARGA DE FORMA MANUAL )
 public class HrPayrollApplication {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HrPayrollApplication.class);

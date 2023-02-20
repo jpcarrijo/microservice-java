@@ -1,7 +1,7 @@
-package com.example.hrpayroll.resources;
+package com.microservice.hrpayroll.resources;
 
-import com.example.hrpayroll.entities.Payment;
-import com.example.hrpayroll.services.PaymentService;
+import com.microservice.hrpayroll.entities.Payment;
+import com.microservice.hrpayroll.services.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

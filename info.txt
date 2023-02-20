@@ -15,7 +15,7 @@ RestTemplate : criar um @Bean para monitorar o método restTemplate() que permit
 	hr-worker.ribbon.listOfServers="portas-que-serão-usadas", "portas-que-serão-usadas"
     para ver que a aplicação está usando balanceamento de carga, duplicar a classe que implementa os métodos REST. na configuração uma classe terá uma porta e a outra uma outra porta. com isso terá que ser realizado o balanço decarga.. uma requisição será processada por uma classe depois outra..  
 
--- Eureka
+-- Eureka server
     instalar jaxb-runtime
     na classe que roda o projeto inserir a anotação @EnableEurekaserver
     no applicationproperties do projeto eureka, definir: 
@@ -24,3 +24,9 @@ RestTemplate : criar um @Bean para monitorar o método restTemplate() que permit
 	
 	eureka.client.register-with-eureka=false
 	eureka.client.fetch-register=false
+
+-- Definir os clientes do server Eureka
+	nos clientes instalar netflix eureka client
+	no client... em application... definir o eureka.client.service-url.defaultZone=
+	no programa principal colocar anotação @EnableEurekaClient
+	no application onde foi definido balanceamento de carga manual retirar a propriedade e colcar do eureka

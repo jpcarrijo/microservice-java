@@ -1,7 +1,7 @@
-package com.example.hrpayroll.exception.handler;
+package com.microservice.hrpayroll.exception.handler;
 
-import com.example.hrpayroll.exception.NotFoundException;
-import com.example.hrpayroll.exception.details.ExceptionDetails;
+import com.microservice.hrpayroll.exception.NotFoundException;
+import com.microservice.hrpayroll.exception.details.ExceptionDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

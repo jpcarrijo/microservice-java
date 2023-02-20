@@ -1,4 +1,4 @@
-package com.example.hreurekaserver;
+package com.microservice.hreurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -83,17 +83,21 @@
 
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>-->
-        <!--                spring-cloud-starter-netflix-eureka-client-->
-        <!--            </artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-config</artifactId>-->
-        <!--        </dependency>-->
+            <groupId>org.springframework.cloud</groupId>
+
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.springframework.cloud</groupId>
+
+            <artifactId>spring-cloud-starter-config</artifactId>
+
+        </dependency>
 
         <dependency>
 
@@ -131,15 +135,26 @@
 
     </build>
 
-    <!--    <dependencyManagement>-->
-    <!--        <dependencies>-->
-    <!--            <dependency>-->
-    <!--                <groupId>org.springframework.cloud</groupId>-->
-    <!--                <artifactId>spring-cloud-dependencies</artifactId>-->
-    <!--                <version>Hoxton.SR8</version>-->
-    <!--                <type>pom</type>-->
-    <!--                <scope>import</scope>-->
-    <!--            </dependency>-->
-    <!--        </dependencies>-->
-    <!--    </dependencyManagement>-->
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+
+                <groupId>org.springframework.cloud</groupId>
+
+                <artifactId>spring-cloud-dependencies</artifactId>
+
+                <version>Hoxton.SR8</version>
+
+                <type>pom</type>
+
+                <scope>import</scope>
+
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
 </project>

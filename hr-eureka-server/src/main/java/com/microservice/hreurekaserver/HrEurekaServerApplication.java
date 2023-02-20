@@ -1,4 +1,4 @@
-package com.example.hreurekaserver;
+package com.microservice.hreurekaserver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
