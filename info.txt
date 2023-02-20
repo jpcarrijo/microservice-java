@@ -29,4 +29,9 @@ RestTemplate : criar um @Bean para monitorar o método restTemplate() que permit
 	nos clientes instalar netflix eureka client
 	no client... em application... definir o eureka.client.service-url.defaultZone=
 	no programa principal colocar anotação @EnableEurekaClient
-	no application onde foi definido balanceamento de carga manual retirar a propriedade e colcar do eureka
+	no application onde foi definido balanceamento de carga manual retirar a propriedade e colocar do eureka
+
+-- Porta aleatória
+	em application inserir:
+	         server.port=${PORT:0}
+                              eureka.instance.instance-id=${spring.application.name}:${spring.application.instance_id:${random.value}}
