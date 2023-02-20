@@ -14,3 +14,13 @@ RestTemplate : criar um @Bean para monitorar o método restTemplate() que permit
     no applicationproperties do projeto que irá enviar a requição inserir: 
 	hr-worker.ribbon.listOfServers="portas-que-serão-usadas", "portas-que-serão-usadas"
     para ver que a aplicação está usando balanceamento de carga, duplicar a classe que implementa os métodos REST. na configuração uma classe terá uma porta e a outra uma outra porta. com isso terá que ser realizado o balanço decarga.. uma requisição será processada por uma classe depois outra..  
+
+-- Eureka
+    instalar jaxb-runtime
+    na classe que roda o projeto inserir a anotação @EnableEurekaserver
+    no applicationproperties do projeto eureka, definir: 
+	spring.apllication.name="projeto"
+	server.port=8761   (padrão de porta)
+	
+	eureka.client.register-with-eureka=false
+	eureka.client.fetch-register=false
