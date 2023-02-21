@@ -53,4 +53,7 @@ server.port=${PORT:0}
 eureka.instance.instance-id=${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 - configurar timeout no zuul para que somente ele esteve com timeout configurado
+
+- criar projeto config server
+- criar um repositorio com arquivos default e test
 	
