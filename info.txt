@@ -57,3 +57,6 @@ eureka.instance.instance-id=${spring.application.name}:${spring.application.inst
 - criar projeto config server
 - criar um repositorio com arquivos default e test
 	
+-- Actuator (atualiza as configurações no repositorio mesmo com a aplicação rodando)
+	instalar a dependencia
+	anotar na classe que usar a configuração com @RefreshScope
