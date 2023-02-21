@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,9 @@ public class WorkerController {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(WorkerController.class);
 
+  @Value("${test.config}")
+  private String testConfig;
+
   // REPOSITORY
   final WorkerRepository workerRepository;
   final Environment env;
@@ -31,13 +35,25 @@ public class WorkerController {
   // INJECTION
   final WorkerDTO workerDTO;
 
+  @GetMapping("/config")
+  public ResponseEntity<Void> getConfig() {
+
+    LOGGER.info("CONFIG = " + testConfig);
+
+    return ResponseEntity.noContent().build();
+
+  }
+
+
   @GetMapping
   public ResponseEntity<List<WorkerDTO>> findAll() {
 
     List<Worker> list = workerRepository.findAll();
 
     return ResponseEntity.status(200).body(workerDTO.convertForDTO(list));
+
   }
+
 
   @GetMapping("/{id}")
   public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id) {
