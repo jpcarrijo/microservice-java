@@ -44,4 +44,13 @@ RestTemplate : criar um @Bean para monitorar o método restTemplate() que permit
 -- API Gateway
 	criar o projeto com as dependências: gateway, web, eureka client
 	na classe principal anotar EnableZuul 
+
+- acrescentar porta aleatoria 
+# porta aleatória... definida pelo eureka
+server.port=${PORT:0}
+
+# configuração para portas aleatórias do eureka
+eureka.instance.instance-id=${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+- configurar timeout no zuul para que somente ele esteve com timeout configurado
 	
