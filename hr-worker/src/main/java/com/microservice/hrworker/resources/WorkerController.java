@@ -40,7 +40,9 @@ public class WorkerController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id) {
+  public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id) throws InterruptedException {
+
+//    Thread.sleep(3000L);
 
     LOGGER.info("PORT = " + env.getProperty("local.server.port"));
 

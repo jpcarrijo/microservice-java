@@ -35,3 +35,8 @@ RestTemplate : criar um @Bean para monitorar o método restTemplate() que permit
 	em application inserir:
 	         server.port=${PORT:0}
                               eureka.instance.instance-id=${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+-- Hystrix  -  
+	tolerância a falhas tipo (timeout... fora do ar... resposta alternativa)
+	na classe principal anotar EnableCircuitBreaker
+	se a classe que executa a requisição estiver com falha é executado o método criado e anotado no principal com @HystrixCommand(fallbackMethod = "método")
