@@ -40,7 +40,7 @@ public class WorkerController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id) throws InterruptedException {
+  public ResponseEntity<WorkerDTO> findById(@PathVariable("id") Long id) {
 
 //    Thread.sleep(3000L);
 
