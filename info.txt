@@ -60,3 +60,5 @@ eureka.instance.instance-id=${spring.application.name}:${spring.application.inst
 -- Actuator (atualiza as configurações no repositorio mesmo com a aplicação rodando)
 	instalar a dependencia
 	anotar na classe que usar a configuração com @RefreshScope
+
+-- Git Privativo
