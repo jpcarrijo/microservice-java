@@ -1,4 +1,4 @@
-package com.microservice.hrworker.exception;
+package com.microservice.hrpayroll.exceptions;
 
 
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
-package com.microservice.hrworker.exception.handler;
+package com.microservice.hrworker.exceptions.handler;
 
-import com.microservice.hrworker.exception.NotFoundException;
-import com.microservice.hrworker.exception.details.ExceptionDetails;
+import com.microservice.hrworker.exceptions.NotFoundException;
+import com.microservice.hrworker.exceptions.details.ExceptionDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

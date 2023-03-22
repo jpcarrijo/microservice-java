@@ -2,7 +2,7 @@ package com.microservice.hrworker.resources;
 
 import com.microservice.hrworker.data.WorkerDTO;
 import com.microservice.hrworker.entities.Worker;
-import com.microservice.hrworker.exception.NotFoundException;
+import com.microservice.hrworker.exceptions.NotFoundException;
 import com.microservice.hrworker.repositories.WorkerRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.microservice.hrworker.exception.details;
+package com.microservice.hrpayroll.exceptions.details;
 
 import java.util.Date;
 

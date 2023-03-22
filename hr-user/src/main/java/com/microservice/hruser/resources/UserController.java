@@ -1,7 +1,7 @@
 package com.microservice.hruser.resources;
 
 import com.microservice.hruser.entities.User;
-import com.microservice.hruser.repository.UserRepository;
+import com.microservice.hruser.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class UserController {
 
 
   @GetMapping(value = "/search")
-  public ResponseEntity<User> findById(@RequestParam(value = "email") String email) {
+  public ResponseEntity<User> findByEmail(@RequestParam(value = "email") String email) {
 
     User user = userRepository.findByEmail(email);
 
