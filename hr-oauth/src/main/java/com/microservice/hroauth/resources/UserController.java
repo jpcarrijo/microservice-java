@@ -23,7 +23,6 @@ public class UserController {
 
     try {
       User user = userService.findUserByEmail(email);
-
       return ResponseEntity.status(200).body(user);
     } catch (IllegalArgumentException ex) {
       throw new IllegalArgumentException(ex.getMessage());

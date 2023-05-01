@@ -1,29 +1,28 @@
 package com.microservice.hroauth.config;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
-@EnableWebSecurity
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class AppConfig extends WebSecurityConfigurerAdapter {
+public class AppConfig {
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http
-        .authorizeRequests()
+  @Bean
+  public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-        .antMatchers(HttpMethod.GET,
-            "/hr-oauth/**"
-        ).permitAll()
+  @Bean
+  public JwtAccessTokenConverter accessTokenConverter() {
+    JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
+    tokenConverter.setSigningKey("MY-SECRET-KEY");
+    return tokenConverter;
+  }
 
-        .and()
-        .csrf().disable().exceptionHandling();
-
+  @Bean
+  public JwtTokenStore tokenStore() {
+    return new JwtTokenStore(accessTokenConverter());
   }
 }
